@@ -31,5 +31,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   oauth_personal_access_clients - Stores the Personal Access Clients for users to primary use for their own use, like testing.
   =====================================================================================================
 
-  
+  run php artisan passport:install
 */
