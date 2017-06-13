@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    OAuthServer1
+                    OAuth2Server1
                 </div>
 
                 <div class="links">
