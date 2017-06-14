@@ -32,4 +32,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   =====================================================================================================
 
   run php artisan passport:install
+
+  =====================================================================================================
+
+  after registering the components, run this command to recompile your assets
+  *** for some reason in my case, running npm run dev generates errors, so I came across this article:  https://github.com/JeffreyWay/laravel-mix/issues/623
+  *** so, run these set of commands first, in this order:
+  *** composer install
+  *** npm install
+  *** npm install cross-env -D
+
+  npm run dev
 */
