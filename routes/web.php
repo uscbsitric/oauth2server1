@@ -21,4 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /*
  * run php artisan migrate
+ * run php artisan passport:install
  * */
