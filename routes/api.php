@@ -19,8 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/user/{user}',
-		   function(\App\User $user)
+		   function(App\User $user)
 		   {
 	         return $user->email;
            }
-		  );
+           )->middleware('auth:api');
