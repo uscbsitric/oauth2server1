@@ -21,6 +21,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/user/{user}',
 		   function(App\User $user)
 		   {
-	         return $user->email;
+	         $id = $user->id;
+	         $name = $user->name;
+	         $email = $user->email;
+	         
+	         return response()->json(['id' => $id,
+	         		                  'name' => $name,
+	         		                  'email' => $email
+	                                 ]);
+	         
            }
            )->middleware('auth:api');
