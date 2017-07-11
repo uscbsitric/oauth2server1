@@ -60,7 +60,8 @@ class ClientController
     {
         $this->validation->make($request->all(), [
             'name' => 'required|max:255',
-            'redirect' => 'required|url',
+            //'redirect' => 'required|url',
+            'redirect' => 'required', // purposely removed this validator so I can use urls the likes of "url1", since its not a valid url name, just for personal purposes.
         ])->validate();
 
         return $this->clients->create(

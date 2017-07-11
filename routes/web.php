@@ -23,3 +23,17 @@ Route::get('/home', 'HomeController@index')->name('home');
  * run php artisan migrate
  * run php artisan passport:install
  * */
+
+Route::get('/simpleTest', 
+		   function()
+		   {
+			 //phpinfo();
+	         $test1 = 'test value1';
+	         $test2 = 'test value2';
+	         
+	         return response()->json(['test1' => $test1,
+	         		                  'test2' => $test2,
+	         		                  'test3' => $test2
+	                                 ]);
+           }
+          );
