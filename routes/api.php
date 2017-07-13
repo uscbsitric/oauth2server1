@@ -31,4 +31,4 @@ Route::get('/user/{user}',
 	                                 ]);
 	         
            }
-           )->middleware('auth:api');
+           )->middleware('scope:check-status,place-orders');
