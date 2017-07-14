@@ -28,6 +28,9 @@ class AuthServiceProvider extends ServiceProvider
     	$this->registerPolicies();    	
     	Passport::routes();
     	Passport::enableImplicitGrant();
+    	Passport::tokensCan(['place-orders' => 'Place orders',
+    			             'check-status' => 'Check order status',
+    	                    ]);
         //Passport::tokensExpireIn(Carbon::now()->addMinute());
         //Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(50));
     }
