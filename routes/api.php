@@ -18,29 +18,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-/*
-  Next we need to run the migration to create the required database tables for using the OAuth service.
-  run  php artisan migrate
+Route::get('/user/{user}',
+		   function(App\User $user)
+		   {
+	         $id = $user->id;
+	         $name = $user->name;
+	         $email = $user->email;
 
-  The migration files are registered in the boot method of the PassportServiceProvider using the registerMigrations method. After the migrations are run, the following tables are created.
+	         return response()->json(['id' => $id,
+	         		                  'name' => $name,
+	         		                  'email' => $email
+	                                 ]);
 
-  oauth_auth_code               - Used to store the Authorization Codes.
-  oauth_access_tokens           - Stores all the issued Access Tokens.
-  oauth_refresh_tokens          - Stores all the Refresh Tokens for the Issued Access Tokens
-  oauth_clients                 - Stores Clients.
-  oauth_personal_access_clients - Stores the Personal Access Clients for users to primary use for their own use, like testing.
-  =====================================================================================================
 
-  run php artisan passport:install
+		   	 //return response()->json(['id' => 'ID here',
+			 //			   			  'name' => 'Name HERE',
+			 //			   			  'email' => 'email here'
+			 //			   			 ]);
 
-  =====================================================================================================
-
-  after registering the components, run this command to recompile your assets
-  *** for some reason in my case, running npm run dev generates errors, so I came across this article:  https://github.com/JeffreyWay/laravel-mix/issues/623
-  *** so, run these set of commands first, in this order:
-  *** composer install
-  *** npm install
-  *** npm install cross-env -D
-
-  npm run dev
-*/
+           }
+           )//->middleware('auth:api','scopes:check-status,place-orders'); // both these notations for middleware works
+           ->middleware(['auth:api','scopes:check-status,place-orders']);  // both these notations for middleware works

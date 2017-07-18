@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Laravel\Passport\Passport;
+use Carbon\Carbon;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -24,9 +25,13 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
-
-        Passport::routes();
-        //
+    	$this->registerPolicies();
+    	Passport::routes();
+    	Passport::enableImplicitGrant();
+    	Passport::tokensCan(['place-orders' => 'Place orders',
+    			             'check-status' => 'Check order status',
+    	                    ]);
+        //Passport::tokensExpireIn(Carbon::now()->addMinute());
+        //Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(50));
     }
 }

@@ -40,6 +40,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         //
+        $this->mapClientCredentialsRoutes();
     }
 
     /**
@@ -69,5 +70,17 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+	/**
+	 * Client Credentials Grant based routes
+	 * 
+	 * @return void
+	 */
+    protected function mapClientCredentialsRoutes()
+    {
+    	Route::prefix('cc')->middleware('client_credentials')
+    	                    ->namespace($this->namespace)
+    	                    ->group( base_path('routes/client_credentials.php') );
     }
 }
